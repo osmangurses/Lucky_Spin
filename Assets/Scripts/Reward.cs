@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Reward", menuName = "Reward")]
 public class Reward : ScriptableObject
 {
-    public RewardType rewardType; // Enum kullanýmý
+    public RewardType rewardType;
     public int amount;
 }
 public enum RewardType

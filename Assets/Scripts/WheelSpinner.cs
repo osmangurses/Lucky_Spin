@@ -10,11 +10,11 @@ public class WheelSpinner : MonoBehaviour, IPointerClickHandler
     public GameObject wheel;
     public Wheel wheelData;
     public WheelManager wheelManager;
-    public RewardSpriteMapping rewardSpriteMapping; // RewardSpriteMapping scriptine referans
-    public GameObject deathPanel; // Death panel için referans
-    public GameObject collectedRewardPanel; // CollectedReward panel için referans
-    public Image rewardImage; // CollectedReward panelindeki Image için referans
-    public TextMeshProUGUI rewardText; // CollectedReward panelindeki TextMeshProUGUI için referans
+    public RewardSpriteMapping rewardSpriteMapping;
+    public GameObject deathPanel;
+    public GameObject collectedRewardPanel;
+    public Image rewardImage;
+    public TextMeshProUGUI rewardText;
     private bool isSpinning = false;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -27,7 +27,7 @@ public class WheelSpinner : MonoBehaviour, IPointerClickHandler
         if (!isSpinning)
         {
             isSpinning = true;
-            int totalRotation = Random.Range(5, 10) * 360 + Random.Range(1, 8) * 45; // Rastgele tam dönüþler + bir kýsmi dönüþ
+            int totalRotation = Random.Range(5, 10) * 360 + Random.Range(1, 8) * 45;
             wheel.transform.DORotate(new Vector3(0, 0, -totalRotation), 3.0f, RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuad)
                 .OnComplete(() =>
@@ -56,11 +56,11 @@ public class WheelSpinner : MonoBehaviour, IPointerClickHandler
         {
             deathPanel.SetActive(false);
             collectedRewardPanel.SetActive(true);
-            rewardImage.sprite = rewardSpriteMapping.GetSpriteForRewardType(currentReward.rewardType); // Ödül ikonunu RewardSpriteMapping'den al
+            rewardImage.sprite = rewardSpriteMapping.GetSpriteForRewardType(currentReward.rewardType);
             rewardImage.SetNativeSize();
-            rewardText.text = "X "+currentReward.amount.ToString(); // Ödül miktarýný güncelle
+            rewardText.text = "X "+currentReward.amount.ToString();
         }
-        wheelManager.Spin(); // Çark döndürülmeden önce ödülleri rastgele güncelle
+        wheelManager.Spin();
         WheelInitializer.instance.InitializeWheel();
         isSpinning = false;
     }

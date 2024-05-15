@@ -12,7 +12,6 @@ public class RewardSpriteMapping : ScriptableObject
 
     public RewardSprite[] rewardSprites;
 
-    // Tür bilgisine göre Sprite döndürme
     public Sprite GetSpriteForRewardType(RewardType type)
     {
         foreach (var rewardSprite in rewardSprites)
